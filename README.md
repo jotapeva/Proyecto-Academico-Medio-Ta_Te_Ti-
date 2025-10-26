@@ -1,96 +1,39 @@
-# 🧠 Medio Tateti — Juego de Estrategia en Java
+# 🧠 Medio Tateti (Java)
 
-> **Proyecto académico desarrollado en Java** para simular el juego “Medio Tateti”, combinando lógica, análisis de patrones y representación visual ASCII en consola.
+**Autores:** *[Agrega tus nombres y números]*  
+**Lenguaje:** Java  
+**Tipo de proyecto:** Consola interactiva  
 
 ---
 
 ## 🎯 Introducción
 
-“**Medio Tateti**” es una variante del clásico *Tres en Línea*, diseñada para dos jugadores.  
-A diferencia del Tateti tradicional, aquí cada jugador coloca **medias fichas**, que pueden combinarse para formar letras “X” u “O”, dependiendo de su orientación.
+Este proyecto implementa el juego **“Medio Tateti”**, una variación del clásico Ta-Te-Ti (Tres en línea).  
+Es un juego para **dos jugadores** que se alternan turnos con el objetivo de formar **3 letras iguales (O o X)** alineadas **en cualquier color**.
 
-- El **jugador Blanco** busca formar **3 letras “O”** alineadas.
-- El **jugador Negro** busca formar **3 letras “X”** alineadas.
-- Gana quien logre su figura antes.
-- Si ambos forman su figura en el mismo turno, gana el jugador del turno actual.
-
----
-
-## 📏 Reglas del Juego
-
-### 🧩 Tablero
-- El tablero es una **matriz de 3 filas × 6 columnas**.
-- Las filas se nombran **A, B y C**.
-- Las columnas se numeran **1 a 6**.
-
-### 🎲 Piezas
-Cada pieza tiene dos atributos:
-- **Color:** Blanco (B) o Negro (N)
-- **Orientación:** “C” o “D”
-
-Las posibles piezas son:
-| Jugador | Orientación C | Orientación D |
-|----------|----------------|----------------|
-| Blanco | `BC` | `BD` |
-| Negro | `NC` | `ND` |
+- El **jugador Blanco** debe formar tres **“O”**.  
+- El **jugador Negro** debe formar tres **“X”**.  
+- El tablero es de **3 filas (A, B, C)** por **6 columnas (1–6)**.  
+- Cada pieza tiene orientación:  
+  - **C** (↘) o **D** (↙)  
+- Se puede colocar o invertir fichas propias, y también solicitar ayuda, mostrar títulos, o rendirse.
 
 ---
 
-## 🧱 Formaciones de Letras
+## 🎮 Reglas del Juego
 
-Cada letra se forma con **2 medias fichas adyacentes horizontalmente**:
+- Comienza el **jugador Blanco**.
+- Cada turno, el jugador puede:
+  - Colocar una ficha libre: `A3C`, `B2D`, etc.
+  - Invertir una ficha propia: `A2I`
+  - Mostrar títulos: `B`
+  - Ocultar títulos: `N`
+  - Solicitar ayuda (jugada ganadora): `H`
+  - Terminar de mutuo acuerdo: `T`
+  - Rendirse (pierde): `X`
 
-| Letra | Formación | Representa |
-|--------|-------------|-------------|
-| X | `D` + `C` | Jugador **Negro** |
-| O | `C` + `D` | Jugador **Blanco** |
-
-El color no importa para la victoria — solo la **combinación de orientaciones**.
-
----
-
-## 🔁 Turnos y Jugadas
-
-- Comienza siempre el **jugador Blanco**.
-- En su turno, cada jugador puede:
-  1. **Colocar** una ficha indicando la fila, columna y orientación → `A3C`, `B2D`.
-  2. **Invertir** una ficha propia → `A3I` (invierte su orientación “C” ↔ “D”).
-
-Jugadas especiales:
-| Comando | Acción |
-|----------|---------|
-| `X` | Finaliza el juego y pierde el jugador actual |
-| `T` | Solicita terminar de mutuo acuerdo (empate, requiere confirmación) |
-| `H` | Solicita ayuda: el sistema indica si existe una jugada ganadora |
-| `B` | Muestra el tablero con títulos (filas y columnas) |
-| `N` | Muestra el tablero sin títulos |
-
-Si una jugada es inválida, debe reingresarse.  
-No se puede pasar turno.
-
----
-
-## 🧮 Funcionamiento Interno (Lógica del Juego)
-
-Internamente, el tablero real (`3x6`) se traduce a un **tablero lógico de 3x5**, donde cada posición representa una posible letra completa (formada por dos fichas consecutivas).
-
-Ejemplo de conversión:
-
-Tablero físico (3x6): Tablero lógico (3x5):
-BD BC ND NC BD NC X O X O X
-
-markdown
-Copiar código
-
-Luego, el sistema analiza todas las posibles **alineaciones de 3 letras iguales**:
-- Horizontales
-- Verticales
-- Diagonales (↘ y ↗)
-
-Si se detecta una secuencia ganadora:
-1. Se identifica la letra ganadora (`X` u `O`).
-2. Se marcan las coordenadas ganadoras.
-3. El método `dibujar()` reemplaza las fichas visualmente por la letra ganadora.
+- Gana quien forme **tres letras iguales alineadas** (horizontal, vertical o diagonal).
+- Si se forman ambas (X y O), gana **la letra correspondiente al jugador que realizó la jugada**.
 
 ---
 
@@ -99,116 +42,126 @@ Si se detecta una secuencia ganadora:
 El tablero se dibuja en texto usando caracteres ASCII.  
 Cada celda tiene tres líneas de alto para mostrar la orientación de las fichas.
 
-Símbolos usados:
-- **Blanco:** `○`
-- **Negro:** `●`
+**Símbolos usados:**
+- Blanco: `○`
+- Negro: `●`
 
-### Ejemplo visual:
-1 2 3 4 5 6
-+--+--+--+--+--+--+
-A |○ |● |○ |● | | |
-| ○|● | ○|● | | |
-|○ |● |○ |● | | |
-+--+--+--+--+--+--+
-B | |○ |● |○ |● | |
-| | ○|● | ○|● | |
-| |○ |● |○ |● | |
-+--+--+--+--+--+--+
-C | | |○ |● |○ |● |
-| | | ○|● | ○|● |
-| | |○ |● |○ |● |
-+--+--+--+--+--+--+
+---
 
-yaml
-Copiar código
+### Ejemplo de tablero común
 
-Si se detecta un ganador:
-1 2 3 4 5 6
-+--+--+--+--+--+--+
-A | X| X| X| | | |
-B | | | | | | |
-C | | | | | | |
-+--+--+--+--+--+--+
+```
+    1  2  3  4  5  6
+   +--+--+--+--+--+--+
+A  |○ |● |○ |● |  |  |
+   |○ |● |○ |● |  |  |
+   +--+--+--+--+--+--+
+B  |  |○ |● |○ |● |  |
+   |  |○ |● |○ |● |  |
+   +--+--+--+--+--+--+
+C  |  |  |○ |● |○ |● |
+   |  |  |○ |● |○ |● |
+   +--+--+--+--+--+--+
+```
 
-yaml
-Copiar código
+---
+
+### Si se detecta un ganador
+
+```
+    1  2  3  4  5  6
+   +--+--+--+--+--+--+
+A  | X| X| X|  |  |  |
+   +--+--+--+--+--+--+
+B  |  |  |  |  |  |  |
+C  |  |  |  |  |  |  |
+   +--+--+--+--+--+--+
+```
+
+Las celdas ganadoras se **rellenan completamente con la letra ganadora (X u O)** para destacar la alineación.
 
 ---
 
 ## ⚙️ Estructura del Código
 
+```
 src/
 └── clases/
-├── Tablero.java ← Lógica central del juego
-├── Jugador.java ← Datos del jugador (nombre, edad, partidas)
-├── Sistema.java ← Menú, control de flujo y ranking
-└── Main.java ← Punto de entrada
-
-yaml
-Copiar código
-
-### 🧩 Principales métodos del `Tablero`
-| Método | Descripción |
-|---------|-------------|
-| `colocar()` | Coloca una ficha si la posición está libre |
-| `invertir()` | Cambia orientación de una ficha del jugador actual |
-| `dibujar()` | Dibuja el tablero con o sin títulos |
-| `verificarGanador()` | Analiza el tablero lógico y retorna el ganador |
-| `clonarTablero()` | Duplica el tablero actual |
-| `estaLibre()` | Indica si una posición está disponible |
+    ├── Tablero.java    ← Lógica central del juego (tablero, fichas, ganador)
+    ├── Jugador.java    ← Datos de cada jugador (nombre, edad, partidas)
+    ├── Sistema.java    ← Menú principal, ranking e interacción de consola
+    └── Main.java       ← Punto de entrada (main)
+```
 
 ---
 
-## 🧑‍💻 Menú del Programa
+## 🧩 Principales Métodos del Tablero
 
-Al iniciar, se muestra:
-
-Trabajo desarrollado por: [NOMBRES Y NÚMEROS DE LOS AUTORES]
-
-a) Registrar un jugador
-b) Comienzo de partida común
-c) Continuación de partida
-d) Mostrar ranking e invictos
-e) Terminar el programa
-
-markdown
-Copiar código
-
-### a) Registrar un jugador
-- Se solicita nombre (único) y edad.  
-- Se almacena en una lista ordenada alfabéticamente.
-
-### b) Comienzo de partida común
-- Se eligen dos jugadores de la lista.  
-- Se alternan los turnos Blanco/Negro.  
-- El programa controla jugadas, ayuda (`H`), fin (`X` o `T`) y muestra el tablero tras cada turno.
-
-### c) Continuación de partida
-- Permite ingresar una **secuencia de movimientos** (`A1C B3D C2I ...`)  
-- Se ejecutan automáticamente y continúa la partida desde ese estado.
-
-### d) Ranking e Invictos
-- Muestra el **ranking de jugadores** ordenado por partidas ganadas.  
-- Lista los **invictos** (nunca jugaron o nunca perdieron).
-
-### e) Terminar
-- Finaliza el programa.
+| Método              | Descripción |
+|---------------------|-------------|
+| `colocar()`         | Coloca una ficha si la posición está libre |
+| `invertir()`        | Cambia orientación de una ficha del jugador actual |
+| `dibujar()`         | Dibuja el tablero (con o sin títulos) |
+| `verificarGanador()`| Analiza las letras formadas y retorna si hay ganador |
+| `clonarTablero()`   | Duplica el estado actual del tablero |
+| `estaLibre()`       | Indica si una posición está disponible |
 
 ---
 
-## 💡 Consideraciones Técnicas
+## 🏆 Ranking e Invictos
 
-- Se usa salida UTF-8 para representar correctamente los símbolos `○` y `●`:
-  ```java
-  System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8.name()));
-Fuente recomendada en consola: Courier New
+El sistema mantiene estadísticas de cada jugador:
+- **Ranking:** Ordenado por cantidad de partidas ganadas.
+- **Invictos:** Jugadores que nunca perdieron o nunca jugaron (orden alfabético).
 
-Entrada insensible a mayúsculas/minúsculas.
+---
 
-Todas las validaciones de jugadas se realizan antes de aplicarlas.
+## 🧠 Detalles Técnicos
 
-🧑‍🎓 Autores
-Juan Pablo Curbelo
-📍 Montevideo, Uruguay
-💻 Facultad de Ingeniería - Universidad ORT Uruguay
-✉️ [Agregar email si querés]
+- Se utiliza **UTF-8** para mostrar correctamente los símbolos `○` y `●`.  
+  Se recomienda usar la fuente **Courier New** en la consola.  
+
+```java
+System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8.name()));
+```
+
+- Insensible a mayúsculas/minúsculas en los comandos.
+
+---
+
+## 💡 Ejemplo de jugadas de prueba
+
+```
+A1C  B2D  C3C  A2I  B4C  X
+```
+
+Esto mostrará el tablero paso a paso, hasta que un jugador se rinda (`X`).
+
+---
+
+## 🧰 Requisitos
+
+- Java 17 o superior.
+- Consola que soporte UTF-8.
+- Compilar con:
+  ```bash
+  javac src/clases/*.java -encoding UTF-8
+  ```
+- Ejecutar con:
+  ```bash
+  java -cp src clases.Main
+  ```
+
+---
+
+## 📜 Créditos
+
+Trabajo desarrollado por:  
+**[Tu Nombre] – [Número de Estudiante]**
+
+Facultad de Ingeniería – Universidad ORT Uruguay  
+Montevideo, 2025
+
+---
+
+> 💬 *“Medio Tateti: más estrategia, menos suerte.”*
