@@ -1,12 +1,12 @@
-# 🧠 Medio Tateti (Java)
+# Medio Tateti (Java)
 
-**Autores:** *[Agrega tus nombres y números]*  
+**Autores:** *Juan Pablo Curbelo*  
 **Lenguaje:** Java  
 **Tipo de proyecto:** Consola interactiva  
 
 ---
 
-## 🎯 Introducción
+## Introducción
 
 Este proyecto implementa el juego **“Medio Tateti”**, una variación del clásico Ta-Te-Ti (Tres en línea).  
 Es un juego para **dos jugadores** que se alternan turnos con el objetivo de formar **3 letras iguales (O o X)** alineadas **en cualquier color**.
@@ -20,7 +20,7 @@ Es un juego para **dos jugadores** que se alternan turnos con el objetivo de for
 
 ---
 
-## 🎮 Reglas del Juego
+## Reglas del Juego
 
 - Comienza el **jugador Blanco**.
 - Cada turno, el jugador puede:
@@ -37,7 +37,7 @@ Es un juego para **dos jugadores** que se alternan turnos con el objetivo de for
 
 ---
 
-## 🎨 Funcionamiento Visual (Representación en Consola)
+## Funcionamiento Visual (Representación en Consola)
 
 El tablero se dibuja en texto usando caracteres ASCII.  
 Cada celda tiene tres líneas de alto para mostrar la orientación de las fichas.
@@ -82,7 +82,7 @@ Las celdas ganadoras se **rellenan completamente con la letra ganadora (X u O)**
 
 ---
 
-## ⚙️ Estructura del Código
+## Estructura del Código
 
 ```
 src/
@@ -95,7 +95,7 @@ src/
 
 ---
 
-## 🧩 Principales Métodos del Tablero
+## Principales Métodos del Tablero
 
 | Método              | Descripción |
 |---------------------|-------------|
@@ -108,7 +108,7 @@ src/
 
 ---
 
-## 🏆 Ranking e Invictos
+## Ranking e Invictos
 
 El sistema mantiene estadísticas de cada jugador:
 - **Ranking:** Ordenado por cantidad de partidas ganadas.
@@ -116,7 +116,7 @@ El sistema mantiene estadísticas de cada jugador:
 
 ---
 
-## 🧠 Detalles Técnicos
+## Detalles Técnicos
 
 - Se utiliza **UTF-8** para mostrar correctamente los símbolos `○` y `●`.  
   Se recomienda usar la fuente **Courier New** en la consola.  
@@ -129,7 +129,7 @@ System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8.name()));
 
 ---
 
-## 💡 Ejemplo de jugadas de prueba
+## Ejemplo de jugadas de prueba
 
 ```
 A1C  B2D  C3C  A2I  B4C  X
@@ -139,7 +139,7 @@ Esto mostrará el tablero paso a paso, hasta que un jugador se rinda (`X`).
 
 ---
 
-## 🧰 Requisitos
+## Requisitos
 
 - Java 17 o superior.
 - Consola que soporte UTF-8.
@@ -153,14 +153,6 @@ Esto mostrará el tablero paso a paso, hasta que un jugador se rinda (`X`).
   ```
 
 ---
-
-## 📜 Créditos
-
-Trabajo desarrollado por:  
-**[Tu Nombre] – [Número de Estudiante]**
-
-Facultad de Ingeniería – Universidad ORT Uruguay  
-Montevideo, 2025
 
 ---
 
