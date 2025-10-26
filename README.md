@@ -15,7 +15,7 @@ Es un juego para **dos jugadores** que se alternan turnos con el objetivo de for
 - El **jugador Negro** debe formar tres **“X”**.  
 - El tablero es de **3 filas (A, B, C)** por **6 columnas (1–6)**.  
 - Cada pieza tiene orientación:  
-  - **C** (↘) o **D** (↙)  
+  - **C** o **D**  
 - Se puede colocar o invertir fichas propias, y también solicitar ayuda, mostrar títulos, o rendirse.
 
 ---
@@ -43,42 +43,30 @@ El tablero se dibuja en texto usando caracteres ASCII.
 Cada celda tiene tres líneas de alto para mostrar la orientación de las fichas.
 
 **Símbolos usados:**
-- Blanco: `○`
+- Blanco:`○`
 - Negro: `●`
-
 ---
-
 ### Ejemplo de tablero común
 
 ```
-    1  2  3  4  5  6
-   +--+--+--+--+--+--+
-A  |○ |● |○ |● |  |  |
-   |○ |● |○ |● |  |  |
-   +--+--+--+--+--+--+
-B  |  |○ |● |○ |● |  |
-   |  |○ |● |○ |● |  |
-   +--+--+--+--+--+--+
-C  |  |  |○ |● |○ |● |
-   |  |  |○ |● |○ |● |
-   +--+--+--+--+--+--+
+   1  2  3  4  5  6 
+  +--+--+--+--+--+--+
+  | ○|  |● |○ |  | ●|
+A |○ |  | ●| ○|  |● |
+  | ○|  |● |○ |  | ●|
+  +--+--+--+--+--+--+
+  |● | ○|  |  | ●|○ |
+B | ●|○ |  |  |● | ○|
+  |● | ○|  |  | ●|○ |
+  +--+--+--+--+--+--+
+  |  |● | ○| ●|○ |  |
+C |  | ●|○ |● | ○|  |
+  |  |● | ○| ●|○ |  |
+  +--+--+--+--+--+--+
 ```
 
 ---
-
-### Si se detecta un ganador
-
-```
-    1  2  3  4  5  6
-   +--+--+--+--+--+--+
-A  | X| X| X|  |  |  |
-   +--+--+--+--+--+--+
-B  |  |  |  |  |  |  |
-C  |  |  |  |  |  |  |
-   +--+--+--+--+--+--+
-```
-
-Las celdas ganadoras se **rellenan completamente con la letra ganadora (X u O)** para destacar la alineación.
+Si se detecta un ganador las celdas ganadoras se **rellenan completamente con la letra ganadora (X u O)** para destacar la alineación.
 
 ---
 
@@ -90,7 +78,7 @@ src/
     ├── Tablero.java    ← Lógica central del juego (tablero, fichas, ganador)
     ├── Jugador.java    ← Datos de cada jugador (nombre, edad, partidas)
     ├── Sistema.java    ← Menú principal, ranking e interacción de consola
-    └── Main.java       ← Punto de entrada (main)
+    └── Juego.java       ← Punto de entrada (main)
 ```
 
 ---
