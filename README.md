@@ -131,17 +131,3 @@ Esto mostrará el tablero paso a paso, hasta que un jugador se rinda (`X`).
 
 - Java 17 o superior.
 - Consola que soporte UTF-8.
-- Compilar con:
-  ```bash
-  javac src/clases/*.java -encoding UTF-8
-  ```
-- Ejecutar con:
-  ```bash
-  java -cp src clases.Main
-  ```
-
----
-
----
-
-> 💬 *“Medio Tateti: más estrategia, menos suerte.”*
